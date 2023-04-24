@@ -9,11 +9,21 @@ import { getFilteredEvents } from "@/utils/data_transform";
 import useSWR from "swr";
 import _ from "lodash";
 import { fromObjectToArray } from "@/utils/data_transform";
+import Head from "next/head";
 
 /*
 client side fetching or server side fetching are both fine
 */
 function Slug({ filteredEvents, hasEror, numYear, numMon }) {
+  const pageHeadData = (
+    <Head>
+      <title>Filtetred event</title>
+      <meta
+        name="description"
+        content={`all events for ${numYear}-${numMon}`}
+      />
+    </Head>
+  );
   // const router = useRouter();
   // const [loadedEvents, setLoadedEvents] = useState();
   // // const filteredData = router.query.slug;
@@ -39,6 +49,7 @@ function Slug({ filteredEvents, hasEror, numYear, numMon }) {
   if (hasEror) {
     return (
       <>
+        {pageHeadData}
         <ErrorAlert>
           <p>Invalid filter. Please adjust your values!</p>
         </ErrorAlert>
@@ -52,6 +63,7 @@ function Slug({ filteredEvents, hasEror, numYear, numMon }) {
   if (filteredEvents.length === 0) {
     return (
       <>
+        {pageHeadData}
         <ErrorAlert>
           <p>No events found for the choosen filter!</p>
         </ErrorAlert>
@@ -64,6 +76,7 @@ function Slug({ filteredEvents, hasEror, numYear, numMon }) {
   const date = new Date(numYear, numMon - 1);
   return (
     <>
+      {pageHeadData}
       <ResultsTitle date={date} />
       <EventList items={filteredEvents} />
     </>

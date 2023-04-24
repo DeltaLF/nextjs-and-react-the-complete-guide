@@ -3,6 +3,7 @@ import EventLogistics from "@/components/event-detail/event-logistics";
 import EventContent from "@/components/event-detail/event-content";
 import ErrorAlert from "@/components/ui/error-alert";
 import { fetchOneEvent, fetchEvents } from "@/api/event";
+import Head from "next/head";
 
 function EventPage({ event }) {
   // const route = useRouter();
@@ -18,6 +19,13 @@ function EventPage({ event }) {
 
   return (
     <>
+      <Head>
+        <title>{event.title}</title>
+        <meta
+          name="description"
+          content={`details about list: ${event.title}`}
+        />
+      </Head>
       <EventSummary title={event.title} />
       <EventLogistics
         date={event.date}
