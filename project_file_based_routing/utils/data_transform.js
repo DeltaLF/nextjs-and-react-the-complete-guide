@@ -17,9 +17,10 @@ export function getFilteredEvents(dateFilter, events) {
 
 export function fromObjectToArray(obj) {
   if (Array.isArray(obj)) return obj;
-  if (typeof obj !== "object" || obj === null) return;
+  if (typeof obj !== "object" || obj === null) return [];
   const newArr = [];
-  for (let [_, value] of Object.entries(obj)) {
+  for (let [key, value] of Object.entries(obj)) {
+    value["id"] = key;
     newArr.push(value);
   }
   return newArr;

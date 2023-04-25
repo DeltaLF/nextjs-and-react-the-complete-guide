@@ -3,6 +3,7 @@ import Head from "next/head";
 import EventList from "@/components/events/event-list";
 import { fetchEvents } from "@/api/event";
 import { getFeaturedEvents } from "@/utils/data_transform";
+import NewsletterRegistration from "@/components/input/newsletter-registration";
 
 function HomePage(props) {
   const { featuredevents } = props;
@@ -16,6 +17,7 @@ function HomePage(props) {
           content="list some great events with best features"
         />
       </Head>
+      <NewsletterRegistration />
       <EventList items={featuredevents} />
     </div>
   );

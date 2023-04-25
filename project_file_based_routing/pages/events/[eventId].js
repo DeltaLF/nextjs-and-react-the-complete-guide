@@ -4,6 +4,7 @@ import EventContent from "@/components/event-detail/event-content";
 import ErrorAlert from "@/components/ui/error-alert";
 import { fetchOneEvent, fetchEvents } from "@/api/event";
 import Head from "next/head";
+import Comments from "@/components/input/comments";
 
 function EventPage({ event }) {
   // const route = useRouter();
@@ -36,6 +37,7 @@ function EventPage({ event }) {
       <EventContent>
         <p>{event.description}</p>
       </EventContent>
+      <Comments eventId={event.id} />
     </>
   );
 }
