@@ -25,3 +25,14 @@ export function fromObjectToArray(obj) {
   }
   return newArr;
 }
+
+export function from_IdToId(obj) {
+  if (Array.isArray(obj)) {
+    for (let objInArr of obj) {
+      if (!!objInArr["_id"] & !objInArr["id"]) {
+        objInArr["id"] = objInArr["_id"];
+      }
+    }
+  }
+  return obj;
+}

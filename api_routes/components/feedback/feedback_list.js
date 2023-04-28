@@ -14,7 +14,6 @@ function FeedbackList({ feedbackItems }) {
       <ul>
         {" "}
         {feedbackItems.map((item) => {
-          console.log(item);
           return (
             <li key={item.id}>
               {item.feedback}{" "}

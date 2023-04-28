@@ -14,7 +14,6 @@ function Comments(props) {
     fetch(`/api/comment/${eventId}`, { method: "GET" })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setComments(data.comments);
       });
   }, [refetch, showComments]);
@@ -26,7 +25,7 @@ function Comments(props) {
   function addCommentHandler(commentData) {
     // send data to API
     fetch(`/api/comment/${eventId}`, {
-      method: "PATCH",
+      method: "POST",
       body: JSON.stringify(commentData),
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +34,6 @@ function Comments(props) {
       .then((res) => res.json())
       .then((data) => {
         setRefetch(!refetch);
-        console.log(data);
       });
   }
 

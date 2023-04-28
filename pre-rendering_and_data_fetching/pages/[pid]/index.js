@@ -6,7 +6,6 @@ function ProductDetailPage(props) {
     return <p>Loading...</p>; // for fallback true
   }
   const product = loadedProduct[0];
-  console.log("prod", product);
   if (!product) {
     return <div>no product found</div>;
   }

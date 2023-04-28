@@ -4,7 +4,6 @@ import fs from "fs/promises";
 
 function Home(props) {
   const { products } = props;
-  console.log(this);
   return (
     <div>
       <ul>
@@ -24,7 +23,6 @@ export async function getStaticProps(context) {
   const filePath = path.join(process.cwd(), "data", "dummy-backend.json");
   const jsonData = await fs.readFile(filePath);
   const data = JSON.parse(jsonData);
-  console.log("console log for checking re-validate", Math.random(), context);
   if (!data) {
     return {
       redirect: {
