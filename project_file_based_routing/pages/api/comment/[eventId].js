@@ -1,6 +1,6 @@
 import { from_IdToId } from "@/utils/data_transform";
 // import { mongodbAction } from "@/db/mongodb_utils";
-import { mongodbAction } from "@/db/utils";
+import { mongodbAction } from "@/db/db-utils";
 import { isCommentObjValid } from "@/utils/data_check";
 
 const DB_COLLECTIONS_NAME = "comments";

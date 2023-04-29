@@ -1,4 +1,4 @@
-import { mongodbAction } from "@/db/utils";
+import { mongodbAction } from "@/db/db-utils";
 
 const DB_COLLECTIONS_NAME = "newsLetter";
 
