@@ -5,7 +5,15 @@ function registerNewsletter(email) {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((res) => res.json());
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return res.json().then((data) => {
+        throw Error(data.message || "Something went wrong");
+      });
+    }
+  });
 }
 
 export { registerNewsletter };

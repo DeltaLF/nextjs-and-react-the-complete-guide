@@ -1,14 +1,34 @@
 import { registerNewsletter } from "@/api/newsletter";
 import classes from "./newsletter-registration.module.css";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+import NotificationContext from "@/store/notification-context";
 
 function NewsletterRegistration() {
+  const notificationContext = useContext(NotificationContext);
   const emailRef = useRef();
+
   function registrationHandler(event) {
     event.preventDefault();
-    registerNewsletter(emailRef.current.value).then((data) => {
-      console.log("result from register endpoint ", data);
+    notificationContext.showNotification({
+      title: "Signing up newsletter",
+      status: "pending",
+      message: "Registering for newsletter...",
     });
+    registerNewsletter(emailRef.current.value)
+      .then((res) => {
+        notificationContext.showNotification({
+          title: "Success!",
+          status: "success",
+          message: "Sign up newsletter successfully!",
+        });
+      })
+      .catch((err) => {
+        notificationContext.showNotification({
+          title: "Fail!",
+          status: "error",
+          message: err.message || "Fail to sign up newsletter",
+        });
+      });
 
     // fetch user input (state or refs)
     // optional: validate input

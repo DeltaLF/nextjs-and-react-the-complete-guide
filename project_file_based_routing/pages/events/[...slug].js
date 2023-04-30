@@ -103,7 +103,6 @@ export async function getServerSideProps(context) {
     { year: numYear, month: numMon },
     events
   );
-  console.log(isInValidInput, numYear, numMon);
   if (isInValidInput) {
     return {
       props: { hasEror: true },

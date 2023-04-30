@@ -3,6 +3,7 @@ import { MongoClient } from "mongodb";
 async function connectDatabase() {
   const client = new MongoClient(process.env.MONGODB_URL);
   await client.connect();
+
   return client;
 }
 
@@ -14,7 +15,6 @@ async function mongodbAction(collectionName, callback) {
   try {
     client = await connectDatabase();
     db = client.db(process.env.MONGODB_DBNAME);
-    console.log(collectionName);
     collection = db.collection(collectionName);
   } catch (error) {
     console.log(error);
@@ -28,7 +28,7 @@ async function mongodbAction(collectionName, callback) {
   // operation
   try {
     const resp = await callback(collection);
-    // client.close();
+    client.close();
     return resp;
   } catch (error) {
     console.log(error);

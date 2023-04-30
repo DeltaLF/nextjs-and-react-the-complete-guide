@@ -28,7 +28,9 @@ async function handler(req, res) {
       break;
     }
     default: {
-      res.status(404);
+      res.status(404).json({
+        message: "not found",
+      });
     }
   }
 }
