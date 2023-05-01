@@ -1,10 +1,10 @@
+import styled from "styled-components";
 import EventItem from "./event-item";
-import classes from "./event-list.module.css";
 
 function EventList(props) {
   const { items } = props;
   return (
-    <ul className={classes.list}>
+    <List>
       {items.map((event) => {
         return (
           <EventItem
@@ -17,8 +17,14 @@ function EventList(props) {
           />
         );
       })}
-    </ul>
+    </List>
   );
 }
 
 export default EventList;
+
+const List = styled.ul`
+  width: 90%;
+  max-width: 40rem;
+  margin: 5rem auto;
+`;
