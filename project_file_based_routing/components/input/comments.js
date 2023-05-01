@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import CommentList from "./comment-list";
 import NewComment from "./new-comment";
-import classes from "./comments.module.css";
 import NotificationContext from "@/store/notification-context";
+import styled from "styled-components";
 
 function Comments(props) {
   const notificationContext = useContext(NotificationContext);
@@ -70,14 +70,35 @@ function Comments(props) {
   }
 
   return (
-    <section className={classes.comments}>
+    <CommentsStyle>
       <button onClick={toggleCommentsHandler}>
         {showComments ? "Hide" : "Show"} Comments
       </button>
       {showComments && <NewComment onAddComment={addCommentHandler} />}
       {showComments && <CommentList items={comments} isLoading={isLoading} />}
-    </section>
+    </CommentsStyle>
   );
 }
 
 export default Comments;
+
+const CommentsStyle = styled.section`
+  margin: 3rem auto;
+  width: 90%;
+  max-width: 40rem;
+  text-align: center;
+  button {
+    font: inherit;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    color: #03be9f;
+    border: 1px solid #03be9f;
+    cursor: pointer;
+  }
+
+  button:hover,
+  button:active {
+    background-color: #dcfff9;
+  }
+`;
