@@ -11,9 +11,11 @@
   "dependencies": {
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.4",
+    "gray-matter": "^4.0.3",
     "next": "13.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-markdown": "^8.0.7"
+    "react-markdown": "^8.0.7",
+    "react-syntax-highlighter": "^15.5.0"
   }
 }
