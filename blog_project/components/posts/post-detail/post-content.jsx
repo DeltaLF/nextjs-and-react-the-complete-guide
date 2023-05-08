@@ -39,11 +39,9 @@ function PostContent({ post }) {
       const { className, children } = code;
       const language = className.split("-")[1];
       return (
-        <SyntaxHighlighter
-          style={a11yDark}
-          language={language}
-          children={children}
-        />
+        <SyntaxHighlighter style={a11yDark} language={language}>
+          {children}
+        </SyntaxHighlighter>
       );
     },
   };
